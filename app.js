@@ -40,23 +40,24 @@ function displaySearchResult(songs) {
 }
 
 //Fetching song lyrics
-function handleLyrics(title, artist) {
-  const url = `https://api.lyrics.ovh/v1/${title}/${artist}`;
+function handleLyrics(artist, title) {
+  const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
   fetch(url)
     .then((response) => response.json())
-    .then((jsonData) => displayLyrics(jsonData, title));
+    .then((jsonData) => displayLyrics(jsonData, title, artist));
 }
 //Displaying song lyrics to the UI
-function displayLyrics(data, title) {
+function displayLyrics(data, title, artist) {
+  window.scrollTo(100, 0);
   if (!data.lyrics) {
     songLyrics.innerHTML = `
         <button class="btn go-back">&lsaquo;</button>
-          <h2 class="text-success mb-4">${title}</h2>
+          <h2 class="text-success mb-4">${title} by ${artist}</h2>
           <pre class="lyric text-white">${data.error}</pre>`;
   } else {
     songLyrics.innerHTML = `
         <button class="btn go-back">&lsaquo;</button>
-          <h2 class="text-success mb-4">${title}</h2>
+          <h2 class="text-success mb-4">${title} by ${artist}</h2>
           <pre class="lyric text-white">${data.lyrics}</pre>`;
   }
 }
