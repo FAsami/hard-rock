@@ -52,12 +52,12 @@ function displayLyrics(data, title, artist) {
   if (!data.lyrics) {
     songLyrics.innerHTML = `
         <button class="btn go-back">&lsaquo;</button>
-          <h2 class="text-success mb-4">${title} by ${artist}</h2>
+          <h2 class="text-success mb-4">${title} <small class = "text-light> by</small> ${artist}</h2>
           <pre class="lyric text-white">${data.error}</pre>`;
   } else {
     songLyrics.innerHTML = `
         <button class="btn go-back">&lsaquo;</button>
-          <h2 class="text-success mb-4">${title} by ${artist}</h2>
+          <h2 class="text-success mb-4">${title} <small class = "text-light"> by</small> ${artist}</h2>
           <pre class="lyric text-white">${data.lyrics}</pre>`;
   }
 }
